@@ -1,0 +1,58 @@
+# Игнорировать все файлы в папке .idea (специфично для Rider и других IDE от JetBrains)
+.idea/
+
+# Игнорировать файлы конфигурации Visual Studio
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Игнорировать папки Build
+[Bb]in/
+[Oo]bj/
+
+.DS_Stores
+
+# Игнорировать файлы NuGet
+*.nupkg
+# Игнорировать папку `packages`, используемую NuGet
+**/packages/*
+
+# Игнорировать файлы Visual Studio Code
+.vscode/
+
+# Игнорировать файлы логов и баз данных SQLite
+*.log
+*.sqlite
+
+# Игнорировать артефакты тестирования
+TestResults/
+
+# Игнорировать файлы бэкапа
+*.[Bb]ackup
+*.[Bb]ak
+
+# Игнорировать файлы конфигурации резервного копирования
+*.tmp
+*.temp
+*.tbd
+
+# Игнорировать файлы, автоматически создаваемые при сборке и запуске
+*.cache
+*.csproj.user
+*.dll
+*.exe
+*.pdb
+*.pidb
+*.swp
+*.swp
+*.userprefs
+*.aps
+*.ncb
+*.sdf
+*.opensdf
+*.suo
+*.obj
+*.exe.config
+*.dll.config
+*.log
