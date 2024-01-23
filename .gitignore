@@ -1,5 +1,6 @@
 # Игнорировать все файлы в папке .idea (специфично для Rider и других IDE от JetBrains)
 .idea/
+.idea
 
 # Игнорировать файлы конфигурации Visual Studio
 *.suo
@@ -11,7 +12,7 @@
 [Bb]in/
 [Oo]bj/
 
-.DS_Stores
+.DS_Store
 
 # Игнорировать файлы NuGet
 *.nupkg
