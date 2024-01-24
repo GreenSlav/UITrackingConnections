@@ -7,18 +7,21 @@ class Program
 {
     static void Main(string[] args)
     {
-        string host = "ip_address";
-        string username = "username";
-        string password = "password";
+        /*string host = "185.102.136.186";
+        string username = "root";
+        string password = "r8IM7O1ww02L";
 
-        using (var client = new SshClient(host, username, password))
+        var list = ReadingServerMethods.GetXrayIPsFromServer(host, username, password);
+
+        foreach (var VARIABLE in list)
         {
-            client.Connect();
+            Console.WriteLine(VARIABLE);
+        }*/
 
-            var command = client.CreateCommand("ls");
-            var result = command.Execute();
-            
-            Console.Write(result);
-        }
+        var unit = new ForeignAddressUnit("111312");
+        
+        Console.WriteLine(unit.IP);
+
+
     }
 }
