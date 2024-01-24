@@ -37,7 +37,7 @@ public static class Server
         return result;
     }
 
-    public static HashSet<string> GetForeignIPFromServer(string host, string username, string password)
+    public static HashSet<string> GetForeignIPListFromServer(string host, string username, string password)
     {
         var result = new HashSet<string>();
 
@@ -45,7 +45,7 @@ public static class Server
 
         foreach (var VARIABLE in list)
         {
-            result.Add(VARIABLE);
+            result.Add(FilterMethods.GetForeignAddressFromLine(VARIABLE));
         }
 
         return result;
