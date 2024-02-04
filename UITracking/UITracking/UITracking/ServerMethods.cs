@@ -87,9 +87,9 @@ public static class Server
             {
                 client.Connect();
             
-                string banCommand = $"sudo iptables -A INPUT -s {addressToUnBan} -j DROP";
-                var cmdToBan = client.CreateCommand(banCommand);
-                cmdToBan.Execute();
+                string unBanCommand = $"sudo iptables -D INPUT -s {addressToUnBan} -j DROP";
+                var cmdToUnBan = client.CreateCommand(unBanCommand);
+                cmdToUnBan.Execute();
 
                 string saveCommand = "sudo netfilter-persistent save";
                 var cmdToSave = client.CreateCommand(saveCommand);
