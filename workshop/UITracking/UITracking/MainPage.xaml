@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:model="clr-namespace:UITracking.Models"
+             xmlns:viewmodel="clr-namespace:UITracking.ViewModels"
+             x:DataType="viewmodel:MainPageViewModel"
+             Title="{Binding Title}"
+             x:Class="UITracking.MainPage">
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="GreyButton" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="#ebebeb"></Setter>
+                <Setter Property="TextColor" Value="#333333"></Setter>
+                <Setter Property="HeightRequest" Value="60"></Setter>
+                <Setter Property="FontSize" Value="25"></Setter>
+                <Setter Property="Margin" Value="15"></Setter>
+                <Setter Property="CornerRadius" Value="20"></Setter>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    
+    <Grid RowDefinitions="Auto, *" ColumnDefinitions="*">
+        <Button Grid.Row="0"  Text="Add a server" Style="{StaticResource GreyButton}" VerticalOptions="End" Command="{Binding GoToRegisterServerCommand}"></Button>
+        <CollectionView Grid.Row="1"
+            Margin="10"            
+            ItemsSource="{Binding ListOfServers}"
+            SelectionMode="None">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="model:Server">
+                    <Grid Padding="5">
+                        <Frame HeightRequest="125">
+                            <VerticalStackLayout
+                                VerticalOptions="Center"
+                                Padding="10">
+                                <Label Text="{Binding Name}" TextColor="Black" FontSize="30" />
+                                <Label Text="{Binding ServerAddress}" />
+                            </VerticalStackLayout>
+                        </Frame>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+    
+
+</ContentPage>
