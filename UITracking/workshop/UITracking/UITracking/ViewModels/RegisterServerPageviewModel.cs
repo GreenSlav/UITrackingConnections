@@ -35,28 +35,37 @@ public partial class RegisterServerPageViewModel : BaseViewModel
 
         try
         {
+            IsBusy = true;
+
             var sshService = new SshService(EnteredHost, EnteredName, EnteredLogin, EnteredPassword);
             var answer = await sshService.IsDataCorrect();
 
             if (answer)
             {
                 var serverToPass = new Server(EnteredHost, EnteredName, EnteredLogin, EnteredPassword);
-                //await Shell.Current.GoToAsync($"..?serverPassed={new Server(EnteredHost, EnteredName, EnteredLogin, EnteredPassword)}");
                 await Shell.Current.GoToAsync("..", true, new Dictionary<string, object>
                 {
-                    {"serverPassed",  serverToPass},
-                    { "example", "its working"}
+                    {"propertyGiven", true},
+                    {"serverPassed", serverToPass}
                 });
+                
+                EnteredName = "";
+                EnteredLogin = "";
+                EnteredHost = "";
+                EnteredPassword = "";
             }
             else
             {
                 await Shell.Current.DisplayAlert("Error", "Entered data is not correct!", "OK");
             }
-            //await Shell.Current.GoToAsync($"..?serverPassed={new Server(EnteredHost, EnteredName, EnteredLogin, EnteredPassword)}");
         }
         catch (Exception e)
         {
             await Shell.Current.DisplayAlert("Error", e.Message, "OK");
+        }
+        finally
+        {
+            IsBusy = false;
         }
     }
 }

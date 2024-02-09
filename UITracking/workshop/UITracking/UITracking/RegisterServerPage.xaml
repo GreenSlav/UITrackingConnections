@@ -31,8 +31,15 @@
                 <Entry Style="{StaticResource Input}" Grid.Row="1" Placeholder="Host" Text="{Binding EnteredHost}"/>
                 <Entry Style="{StaticResource Input}" Grid.Row="2" Placeholder="Login" Text="{Binding EnteredLogin}"/>
                 <Entry Style="{StaticResource Input}" Grid.Row="3" Placeholder="Password"  IsPassword="True" Text="{Binding EnteredPassword}"/>
-                <Button Grid.Row="4" HeightRequest="60" CornerRadius="20" Margin="5, 0, 5, 0" Text="Save" FontSize="25" Command="{Binding SaveEnteredCommandCommand}"></Button>
+                <Button Grid.Row="4" BackgroundColor="Black" TextColor="White" HeightRequest="60" CornerRadius="20" Margin="5, 0, 5, 0" Text="Save" FontSize="25" Command="{Binding SaveEnteredCommandCommand}"></Button>
             </Grid>
         </Border>
+        <ActivityIndicator IsVisible="{Binding IsBusy}"
+                           IsRunning="{Binding IsBusy}"
+                           HorizontalOptions="Fill"
+                           VerticalOptions="Center"
+                           Grid.RowSpan="2"
+                           Grid.ColumnSpan="2"
+                           Color="Black"/>
     </Grid>
 </ContentPage>

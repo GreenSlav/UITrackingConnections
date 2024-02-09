@@ -1,4 +1,6 @@
-﻿namespace UITracking;
+﻿using UITracking.Models;
+
+namespace UITracking;
 
 public partial class AppShell : Shell
 {
@@ -7,6 +9,7 @@ public partial class AppShell : Shell
         InitializeComponent();
         
         Routing.RegisterRoute(nameof(RegisterServerPage), typeof(RegisterServerPage));
-        Routing.RegisterRoute(nameof(MainPage), typeof(MainPage));
+        Routing.RegisterRoute("..", typeof(MainPage));
+        Routing.RegisterRoute(nameof(ServerPage), typeof(ServerPage));
     }
 }

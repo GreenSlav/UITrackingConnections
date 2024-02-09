@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="UITracking.ServerPage"
+             xmlns:viewmodel="clr-namespace:UITracking.ViewModels"
+             xmlns:model="clr-namespace:UITracking.Models"
+             x:DataType="viewmodel:ServerPageViewModel"
+             Title="{Binding Title}">
+    <ContentPage.Content>
+        <Grid
+            ColumnDefinitions="*,*"
+            ColumnSpacing="5"
+            RowDefinitions="*,Auto"
+            RowSpacing="0">
+            <CollectionView
+                Grid.ColumnSpan="2"
+                ItemsSource="{Binding ListOfAddresses}"
+                SelectionMode="None">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="model:ForeignAddress">
+                        <Grid Padding="20, 10, 10, 10">
+                            <Frame HeightRequest="80" WidthRequest="300" CornerRadius="20">
+                                <HorizontalStackLayout HorizontalOptions="Center">
+                                    <Switch BackgroundColor="#f9f9f9" IsToggled="True" OnColor="LightGreen" />
+                                    <Label Margin="15, 10, 0, 0"  Text="{Binding  Host}" TextColor="Black" FontAttributes="Bold" FontSize="16"/>
+                                </HorizontalStackLayout>
+                            </Frame>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <Button Text="Get IPs" 
+                    Command="{Binding GetIPsCommand}"
+                    IsEnabled="{Binding isNotBusy}"
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    Margin="8"
+                    Padding="15"
+                    BackgroundColor="Black"
+                    TextColor="White"
+                    FontSize="20"/>
+
+
+            <ActivityIndicator IsVisible="{Binding IsBusy}"
+                               IsRunning="{Binding IsBusy}"
+                               HorizontalOptions="Fill"
+                               VerticalOptions="Center"
+                               Grid.RowSpan="2"
+                               Grid.ColumnSpan="2"
+                               Color="Black"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

@@ -10,8 +10,8 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <Style x:Key="GreyButton" TargetType="Button">
-                <Setter Property="BackgroundColor" Value="#ebebeb"></Setter>
-                <Setter Property="TextColor" Value="#333333"></Setter>
+                <Setter Property="BackgroundColor" Value="Black"></Setter>
+                <Setter Property="TextColor" Value="White"></Setter>
                 <Setter Property="HeightRequest" Value="60"></Setter>
                 <Setter Property="FontSize" Value="25"></Setter>
                 <Setter Property="Margin" Value="15"></Setter>
@@ -26,23 +26,41 @@
         <CollectionView Grid.Row="1"
             Margin="10"            
             ItemsSource="{Binding ListOfServers}"
-            SelectionMode="None">
+            SelectionMode="Single">
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="model:Server">
                     <Grid Padding="5">
                         <Frame HeightRequest="125">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer 
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:MainPageViewModel}}, Path=GoToDetailsCommand}"
+                                    CommandParameter="{Binding .}"/>
+                                <SwipeGestureRecognizer
+                                    Direction="Left"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:MainPageViewModel}}, Path=DeleteServerCommand}"
+                                    CommandParameter="{Binding .}"/>
+                            </Frame.GestureRecognizers>
                             <VerticalStackLayout
+                                BackgroundColor="White"
                                 VerticalOptions="Center"
                                 Padding="10">
-                                <Label Text="{Binding Name}" TextColor="Black" FontSize="30" />
-                                <Label Text="{Binding ServerAddress}" />
+                                <Label Text="{Binding Name}" FontAttributes="Bold"  FontSize="30" />
+                                <Label Text="{Binding ServerAddress}" FontAttributes="Bold"/>
                             </VerticalStackLayout>
                         </Frame>
                     </Grid>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
+        <ActivityIndicator IsVisible="{Binding IsBusy}"
+                           IsRunning="{Binding IsBusy}"
+                           HorizontalOptions="Fill"
+                           VerticalOptions="Center"
+                           Grid.RowSpan="2"
+                           Grid.ColumnSpan="2"
+                           Color="Black"/>
     </Grid>
+    
     
 
 </ContentPage>

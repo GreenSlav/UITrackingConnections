@@ -7,6 +7,7 @@ public class Server
     public string Login { get; }
     public string Password { get; }
 
+    public HashSet<string> BannedAddresses;
     public Server(string serverAddress, string name, string login, string password)
     {
         ServerAddress = serverAddress;

@@ -1,4 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
+using UITracking.CustomServices;
+using UITracking.CustomServices;
 using UITracking.ViewModels;
 
 namespace UITracking;
@@ -21,8 +23,14 @@ public static class MauiProgram
 
         builder.Services.AddTransient<RegisterServerPage>();
         builder.Services.AddTransient<RegisterServerPageViewModel>();
+        
+        builder.Services.AddTransient<ServerPage>();
+        builder.Services.AddTransient<ServerPageViewModel>();
 
         builder.Services.AddSingleton<IConnectivity>(Connectivity.Current);
+
+        builder.Services.AddSingleton<SshService>();
+        builder.Services.AddSingleton<AddressService>();
 
 #if DEBUG
         builder.Logging.AddDebug();
